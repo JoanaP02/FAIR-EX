@@ -11,5 +11,7 @@ namespace Fair_ex.wwwroot.Models
         public DateTime DataComecoInicio { get; set; }
         public DateTime DataComecoFim { get; set; }
         public List<Stand>? Stands { get; set; }
+
+
     }
 }
