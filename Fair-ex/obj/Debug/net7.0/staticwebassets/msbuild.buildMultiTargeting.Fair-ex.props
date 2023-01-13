@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Fair-ex.props" />
+</Project>
