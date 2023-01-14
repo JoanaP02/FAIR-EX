@@ -22,7 +22,7 @@ namespace Fair_ex.Controllers
             return Ok(clientes);
         }
         [HttpGet("{username}")]
-        public async Task<ActionResult<Cliente>> GetCliente(int username)
+        public async Task<ActionResult<Cliente>> GetCliente(string username)
         {
             using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
             var cliente = await connection.QueryFirstAsync<Cliente>("select * from Cliente where username = @Username",
@@ -56,7 +56,7 @@ namespace Fair_ex.Controllers
                 });
         }
         [HttpDelete("{username}")]
-        public async void DeleteCliente(int username)
+        public async void DeleteCliente(string username)
         {
             using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
             await connection.ExecuteAsync("delete from Cliente where username = @Username",
