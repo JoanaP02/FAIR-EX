@@ -4,10 +4,10 @@
     {
         public int Id { get; set; }
         public Tema Tema { get; set; }
-        public DateTime DataIncricaoIninio { get; set; }
-        public DateTime DataIncricaoFim { get; set; }
-        public DateTime DataComecoInicio { get; set; }
-        public DateTime DataComecoFim { get; set; }
+        public string DataIncricaoIninio { get; set; }
+        public string DataIncricaoFim { get; set; }
+        public string DataComecoInicio { get; set; }
+        public string DataComecoFim { get; set; }
         public List<Stand>? Stands { get; set; }
 
 

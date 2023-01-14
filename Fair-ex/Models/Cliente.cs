@@ -7,6 +7,9 @@
         public string Morada { get; set; }
         public int Telemovel { get; set; }
         public int Cartao { get; set; }
-        public List<Produto> Carrinho {get; set;}
+        public int CCV { get; set; }
+        public string Email { get; set; }
+        public List<Produto>? Carrinho {get; set;}
+        public string validade { get; set; }
     }
 }
