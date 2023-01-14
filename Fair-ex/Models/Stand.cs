@@ -2,7 +2,6 @@
 {
     public class Stand
     {
-        public int Id { get; set; }
         public Vendedor Vendedor { get; set; }
         public Tema Tema { get; set; }
         public int Taxa_Aceitacao { get; set; }

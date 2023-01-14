@@ -15,18 +15,18 @@ namespace Fair_ex.Controllers
             _config = config;
         }
         [HttpGet]
-        public async Task<ActionResult<List<Produto>>> GetAllProdutos()
+        public async Task<ActionResult<List<Vendedor>>> GetAllVendedores()
         {
             using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            var produtos = await connection.QueryAsync<Produto>("select * from Vendedor");
-            return Ok(produtos);
+            var vendedores = await connection.QueryAsync<Produto>("select * from Vendedor");
+            return Ok(vendedores);
         }
         [HttpGet("{username}")]
-        public async Task<ActionResult<Produto>> GetProduto(int idProduto)
+        public async Task<ActionResult<Vendedor>> GetVendedor(int username)
         {
             using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            var produto = await connection.QueryFirstAsync<Produto>("select * from Vendedor where idProduto = @Id",
-                new { Id = idProduto });
+            var produto = await connection.QueryFirstAsync<Produto>("select * from Vendedor where username = @Id",
+                new { Id = username });
             return Ok(produto);
         }
         [HttpPost]

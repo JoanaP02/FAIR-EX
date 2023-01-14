@@ -3,5 +3,6 @@
     public class Categoria
     {
         public string Nome { get; set; }
+        public string Tema { get; set; }
     }
 }
