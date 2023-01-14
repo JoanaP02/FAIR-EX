@@ -12,22 +12,22 @@ namespace Fair_ex.Services
         {
             _config = config;
         }
-        [HttpGet]
-        public async Task<ActionResult<List<Cliente>>> GetAllClientes()
+
+        public async Task<List<Cliente>> GetAllClientes()
         {
             using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
             var clientes = await connection.QueryAsync<Cliente>("select * from Cliente");
-            return Ok(clientes);
+            return clientes.ToList();
         }
-        [HttpGet("{username}")]
+
         public async Task<ActionResult<Cliente>> GetCliente(string username)
         {
             using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
             var cliente = await connection.QueryFirstAsync<Cliente>("select * from Cliente where username = @Username",
                 new { Username = username });
-            return Ok(cliente);
+            return  cliente;
         }
-        [HttpPost]
+
         public async void CreateCliente(Cliente c)
         {
             using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
@@ -45,7 +45,7 @@ namespace Fair_ex.Services
                     Email = c.Email
                 });
         }
-        [HttpPut]
+
         public async void UpdateCliente(Cliente c)
         {
             using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
@@ -62,7 +62,7 @@ namespace Fair_ex.Services
                     Email = c.Email
                 });
         }
-        [HttpDelete("{username}")]
+        
         public async void DeleteCliente(string username)
         {
             using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));

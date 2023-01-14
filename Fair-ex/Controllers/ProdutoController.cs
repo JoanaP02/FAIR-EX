@@ -2,6 +2,7 @@
 using Fair_ex.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
+using Fair_ex.Services;
 
 namespace Fair_ex.Controllers
 {
@@ -9,53 +10,34 @@ namespace Fair_ex.Controllers
     [ApiController]
     public class ProdutoController : Controller
     {
-        private readonly IConfiguration _config;
+        private ProdutoService service;
         public ProdutoController(IConfiguration config)
         {
-            _config = config;
+            service = new ProdutoService(config);
         }
         [HttpGet]
         public async Task<ActionResult<List<Produto>>> GetAllProdutos() {
-            using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            var produtos = await connection.QueryAsync<Produto>("select * from Produtos");
-            return Ok(produtos);
+            return Ok(service.GetAllProdutos());
         }
         [HttpGet("{idProduto}")]
         public async Task<ActionResult<Produto>> GetProduto(int idProduto)
         {
-            using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            var produto = await connection.QueryFirstAsync<Produto>("select * from Produtos where idProduto = @Id",
-                new {Id = idProduto});
-            return Ok(produto);
+            return Ok(service.GetProduto(idProduto));
         }
         [HttpPost]
         public async void CreateProduto(Produto p)
         {
-            using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            Categoria c = p.Categoria;
-            await connection.ExecuteAsync("insert into categoria (idcategoria, tema)" +
-                " values(@idcategoria, @tema)",
-                new { idcategoria = c.Nome, tema = c.Tema });
-            await connection.ExecuteAsync("insert into Produtos (idProduto, Nome, categoria_idcategoria,Descricao,Preco, Stand_feira_idfeira, Stand_Vendedor_username)" +
-                " values(@Id, @Nome, @Categoria, @Descricao, @Preco, @Idfeira, @Username)",
-                new { Id = p.Id, Nome = p.Nome, Categoria = p.Categoria.Nome, Descricao = p.Descricao, Preco = p.Preco, IdFeira = p.IdFeira, Username = p.UsernameVendedor });
+            service.CreateProduto(p);
         }
         [HttpPut]
         public async void UpdateProduto(Produto p)
         {
-            using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            Categoria c = p.Categoria;
-            await connection.ExecuteAsync("update categoria set idcategoria= @idcategoria, tema= @tema",
-                new { idcategoria = c.Nome, tema = c.Tema });
-            await connection.ExecuteAsync("update Produtos set idProduto= @Id, Nome= @Nome, categoria_idcategoria=@Categoria,Descricao=@Descricao,Preco=@Preco, Stand_feira_idfeira= @IdFeira, Stand_Vendedor_username= @Username",
-                new { Id = p.Id, Nome = p.Nome, Categoria = p.Categoria.Nome, Descricao = p.Descricao, Preco = p.Preco, IdFeira = p.IdFeira, Username = p.UsernameVendedor });
+            service.UpdateProduto(p);
         }
         [HttpDelete("{idProduto}")]
         public async void DeleteProduto(int idProduto)
         {
-            using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            await connection.ExecuteAsync("delete from Produtos where idProduto = @Id",
-                new { Id = idProduto });
+            service.DeleteProduto(idProduto);
         }
 
     }
