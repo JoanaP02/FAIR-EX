@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 
 namespace Fair_ex.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("vendedor/[controller]")]
     [ApiController]
     public class VendedorController : Controller
     {

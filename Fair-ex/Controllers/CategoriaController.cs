@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 
 namespace Fair_ex.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("categoria/[controller]")]
     [ApiController]
     public class CategoriaController : Controller
     {
@@ -22,7 +22,7 @@ namespace Fair_ex.Controllers
             return Ok(produtos);
         }
         [HttpGet("{idcategoria}")]
-        public async Task<ActionResult<Vendedor>> GetCategoria(int id)
+        public async Task<ActionResult<Categoria>> GetCategoria(int id)
         {
             using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
             var categoria = await connection.QueryFirstAsync<Produto>("select * from categoria where idcategoria= @Id",
