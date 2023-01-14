@@ -1,6 +1,7 @@
 ﻿using Fair_ex.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
+using Dapper;
 
 namespace Fair_ex.Services
 {
