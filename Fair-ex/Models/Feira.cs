@@ -1,6 +1,4 @@
-﻿using Fair_ex.Models;
-
-namespace Fair_ex.wwwroot.Models
+﻿namespace Fair_ex.Models
 {
     public class Feira
     {
