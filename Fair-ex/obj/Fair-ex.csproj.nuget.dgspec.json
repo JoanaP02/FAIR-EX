@@ -1,20 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "/Users/xiquita/Desktop/UM/3a1s/LI/FAIR-EX/Fair-ex/Fair-ex.csproj": {}
+    "D:\\ProgramData\\github\\li4\\Fair-ex\\Fair-ex.csproj": {}
   },
   "projects": {
-    "/Users/xiquita/Desktop/UM/3a1s/LI/FAIR-EX/Fair-ex/Fair-ex.csproj": {
+    "D:\\ProgramData\\github\\li4\\Fair-ex\\Fair-ex.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/xiquita/Desktop/UM/3a1s/LI/FAIR-EX/Fair-ex/Fair-ex.csproj",
+        "projectUniqueName": "D:\\ProgramData\\github\\li4\\Fair-ex\\Fair-ex.csproj",
         "projectName": "Fair-ex",
-        "projectPath": "/Users/xiquita/Desktop/UM/3a1s/LI/FAIR-EX/Fair-ex/Fair-ex.csproj",
-        "packagesPath": "/Users/xiquita/.nuget/packages/",
-        "outputPath": "/Users/xiquita/Desktop/UM/3a1s/LI/FAIR-EX/Fair-ex/obj/",
+        "projectPath": "D:\\ProgramData\\github\\li4\\Fair-ex\\Fair-ex.csproj",
+        "packagesPath": "C:\\Users\\35193\\.nuget\\packages\\",
+        "outputPath": "D:\\ProgramData\\github\\li4\\Fair-ex\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/xiquita/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\35193\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -66,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
