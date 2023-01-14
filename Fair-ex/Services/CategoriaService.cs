@@ -1,6 +1,7 @@
 ﻿using Fair_ex.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
+using Dapper;
 
 namespace Fair_ex.Services
 {
@@ -12,19 +13,19 @@ namespace Fair_ex.Services
             _config = config;
         }
 
-        public async Task<ActionResult<List<Categoria>>> GetAllCategorias()
+        public async Task<List<Categoria>> GetAllCategorias()
         {
             using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            var produtos = await connection.QueryAsync<Produto>("select * from categoria");
-            return Ok(produtos);
+            var categorias = await connection.QueryAsync<Categoria>("select * from categoria");
+            return categorias.ToList();
         }
 
-        public async Task<ActionResult<Categoria>> GetCategoria(int id)
+        public async Task<Categoria> GetCategoria(int id)
         {
             using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            var categoria = await connection.QueryFirstAsync<Produto>("select * from categoria where idcategoria= @Id",
+            var categoria = await connection.QueryFirstAsync<Categoria>("select * from categoria where idcategoria= @Id",
                 new { Id = id });
-            return Ok(categoria);
+            return categoria;
         }
 
         public async void CreateCategoria(Categoria c)

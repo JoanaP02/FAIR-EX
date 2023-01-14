@@ -16,14 +16,14 @@ namespace Fair_ex.Controllers
             service = new CategoriaService(config);
         }
         [HttpGet]
-        public Task<ActionResult<List<Categoria>>> GetAllCategorias()
+        public async Task<ActionResult<List<Categoria>>> GetAllCategorias()
         {
-            return service.GetAllCategorias();
+            return Ok(service.GetAllCategorias());
         }
         [HttpGet("{idcategoria}")]
-        public Task<ActionResult<Categoria>> GetCategoria(int id)
+        public async Task<ActionResult<Categoria>> GetCategoria(int id)
         {
-            return service.GetCategoria(id);
+            return Ok(service.GetCategoria(id));
         }
         [HttpPost]
         public async void CreateCategoria(Categoria c)
