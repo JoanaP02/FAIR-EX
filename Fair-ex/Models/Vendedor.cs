@@ -9,5 +9,6 @@
         public string IBAN { get; set; }
         public int Avaliacao { get; set; }
         public int ReceitaTotal { get; set; }
+        public string Email { get; set; }
     }
 }

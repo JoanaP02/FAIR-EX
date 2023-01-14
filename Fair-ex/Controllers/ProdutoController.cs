@@ -40,14 +40,14 @@ namespace Fair_ex.Controllers
         public async void UpdateProduto(Produto p)
         {
             using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            await connection.ExecuteAsync("update Produtos set idProduto= @Id, Nome= @Nome, categoria_idcategoria=@Categoria,Descricao=@Descricao,Preco=@Preco, Stand_feira_idfeira= @IdFeira, Stand_Vendedor_username= @Username)",
+            await connection.ExecuteAsync("update Produtos set idProduto= @Id, Nome= @Nome, categoria_idcategoria=@Categoria,Descricao=@Descricao,Preco=@Preco, Stand_feira_idfeira= @IdFeira, Stand_Vendedor_username= @Username",
                 new { Id = p.Id, Nome = p.Nome, Categoria = p.Categoria, Descricao = p.Descricao, Preco = p.Preco, IdFeira = p.IdFeira, Username = p.UsernameVendedor });
         }
-        [HttpDelete]
+        [HttpDelete("{idProduto}")]
         public async void DeleteProduto(int idProduto)
         {
             using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            var produto = await connection.QueryFirstAsync<Produto>("delete from Produtos where idProduto = @Id",
+            await connection.ExecuteAsync("delete from Produtos where idProduto = @Id",
                 new { Id = idProduto });
         }
 
