@@ -11,5 +11,7 @@
         public string Descricao { get; set; }
         public int Preco { get; set; }
         public int Stock { get; set; }
+        public int IdFeira { get; set; }
+        public string UsernameVendedor { get; set; }
     }
 }
