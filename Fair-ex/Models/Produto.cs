@@ -2,6 +2,17 @@
 {
     public class Produto
     {
+        public Produto(int Id,string Nome,Categoria Categoria,string Descricao,int Preco,int Stock,int IdFeira, string User)
+        {
+            this.Id = Id;
+            this.Nome = Nome;
+            this.Categoria = Categoria;
+            this.Descricao = Descricao;
+            this.Preco = Preco;
+            this.Stock = Stock;
+            this.IdFeira = IdFeira;
+            this.UsernameVendedor = User;
+        }
         public int Id { get; set; }
         public string Nome { get; set; }
         public Categoria Categoria { get; set; }

@@ -16,25 +16,40 @@ namespace Fair_ex.Services
         public async Task<List<Produto>> GetAllProdutos()
         {
             using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            var produtos = await connection.QueryAsync<Produto>("select * from Produtos");
-            return produtos.ToList();
+            var query = @"SELECT * FROM Produtos; 
+                  SELECT * FROM categoria";
+            using (var multi = connection.QueryMultiple(query))
+            {
+                var produtos = multi.Read<Produto>().ToList();
+                var categorias = multi.Read<Categoria>().ToList();
+                produtos.ForEach(p => p.Categoria = categorias.FirstOrDefault(c => c.Nome == p.Categoria.Nome));
+                return produtos;
+            }
         }
         
         public async Task<Produto> GetProduto(int idProduto)
         {
             using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            var produto = await connection.QueryFirstAsync<Produto>("select * from Produtos where idProduto = @Id",
-                new { Id = idProduto });
-            return produto;
-        }
+            var query = @"SELECT * FROM Produtos WHERE idProduto = @id; 
+                  SELECT * FROM categoria WHERE idcategoria = (SELECT categoria_idcategoria FROM Produtos WHERE idProduto = @id)";
+            var parameters = new { id = idProduto };
+            using (var multi = connection.QueryMultiple(query, parameters))
+            {
+                var produto = multi.Read<Produto>().FirstOrDefault();
+                var categoria = multi.Read<Categoria>().FirstOrDefault();
+                produto.Categoria = categoria;
+                return produto;
+            }
+          }
+
+   
         
         public async void CreateProduto(Produto p)
         {
             using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
             Categoria c = p.Categoria;
-            await connection.ExecuteAsync("insert into categoria (idcategoria, tema)" +
-                " values(@idcategoria, @tema)",
-                new { idcategoria = c.Nome, tema = c.Tema });
+            CategoriaService cs = new CategoriaService(_config);
+            cs.CreateCategoria(c);
             await connection.ExecuteAsync("insert into Produtos (idProduto, Nome, categoria_idcategoria,Descricao,Preco, Stand_feira_idfeira, Stand_Vendedor_username)" +
                 " values(@Id, @Nome, @Categoria, @Descricao, @Preco, @Idfeira, @Username)",
                 new { Id = p.Id, Nome = p.Nome, Categoria = p.Categoria.Nome, Descricao = p.Descricao, Preco = p.Preco, IdFeira = p.IdFeira, Username = p.UsernameVendedor });
@@ -44,8 +59,8 @@ namespace Fair_ex.Services
         {
             using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
             Categoria c = p.Categoria;
-            await connection.ExecuteAsync("update categoria set idcategoria= @idcategoria, tema= @tema",
-                new { idcategoria = c.Nome, tema = c.Tema });
+            CategoriaService cs = new CategoriaService(_config);
+            cs.UpdateCategoria(c);
             await connection.ExecuteAsync("update Produtos set idProduto= @Id, Nome= @Nome, categoria_idcategoria=@Categoria,Descricao=@Descricao,Preco=@Preco, Stand_feira_idfeira= @IdFeira, Stand_Vendedor_username= @Username",
                 new { Id = p.Id, Nome = p.Nome, Categoria = p.Categoria.Nome, Descricao = p.Descricao, Preco = p.Preco, IdFeira = p.IdFeira, Username = p.UsernameVendedor });
         }
