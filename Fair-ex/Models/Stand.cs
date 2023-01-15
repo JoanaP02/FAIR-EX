@@ -4,6 +4,10 @@ namespace Fair_ex.Models
 {
     public class Stand
     {
+        public Stand()
+        {
+
+        }
         public Stand(Vendedor vendedor, int taxa_Aceitacao, int taxa_rejeicao, List<Produto>? produtos, float receita)
         {
             Vendedor = vendedor;

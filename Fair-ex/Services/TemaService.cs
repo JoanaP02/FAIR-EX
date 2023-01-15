@@ -11,15 +11,17 @@ namespace Fair_ex.Services
         }
         public async Task<List<Tema>> GetAllTemas()
         {
-            using var connection = new SqlConnection("Server=localhost;Database=FairEX;User Id=sa;Password=Password1234;");
+            using var connection = new SqlConnection("Server=localhost;Database=FairEXDB;User Id=sa;Password=Password1234;");
             var temas = await connection.QueryAsync<Tema>("select * from tema");
             return temas.ToList();
         }
-        public async Task<Tema> GetTema(string nome)
+        public Tema GetTema(string nome)
         {
             using var connection = new SqlConnection("Server=localhost;Database=FairEX;User Id=sa;Password=Password1234;");
-            var tema = await connection.QueryFirstAsync<Tema>("select * from tema where nome= @Nome",
+            var tema = connection.QueryFirst<Tema>("select * from tema where nome= @Nome",
                 new { Nome = nome });
+            Console.WriteLine(tema.Nome);
+            Console.WriteLine(tema.Imagem);
             return tema;
         }
         public async void CreateTema(Tema t)

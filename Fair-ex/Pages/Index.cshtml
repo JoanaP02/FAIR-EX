@@ -92,7 +92,7 @@
                                     <br />
                                 </span>
                             </div>
-                            <h4 class="index-text03 heading-tema">casa &amp; jardim</h4>
+                            <h4 class="index-text03 heading-tema">@Model.tema.Nome</h4>
                             <div class="index-btn-group">
                                 <a href="#stands" class="index-link button">
                                     <span>
@@ -195,13 +195,16 @@
                     oferecer
                 </span>
                 <div class="index-container05">
+                    @foreach (var stand in Model.stands)
+                        {
+
                     <a asp-page="/Stand" class="index-navlink">
                         <div class="stand-card-gallery-card stand-card-root-class-name">
                             <img alt="image"
-                                 src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDN8fGhvbWV8ZW58MHx8fHwxNjcxMjg4Njcw&ixlib=rb-4.0.3&w=1500"
+                                 src="@stand.imagem"
                                  class="stand-card-image" />
                             <div class="stand-card-container">
-                                <h1 class="stand-card-text"><span>Casa com asas</span></h1>
+                                <h1 class="stand-card-text"><span>@stand.nome</span></h1>
                                 <div class="stars-container stars-root-class-name">
                                     <svg viewBox="0 0 1024 1024" class="stars-icon">
                                         <path d="M512 736l-264 160 70-300-232-202 306-26 120-282 120 282 306 26-232 202 70 300z"></path>
@@ -217,112 +220,7 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <div class="stand-card-gallery-card stand-card-root-class-name1">
-                        <img alt="image"
-                             src="https://images.unsplash.com/photo-1534889156217-d643df14f14a?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDI3fHxob21lfGVufDB8fHx8MTY3MTI4ODY3OA&ixlib=rb-4.0.3&w=1500"
-                             class="stand-card-image" />
-                        <div class="stand-card-container">
-                            <h1 class="stand-card-text"><span>Paz & Prazer</span></h1>
-                            <div class="stars-container stars-root-class-name">
-                                <svg viewBox="0 0 1024 1024" class="stars-icon">
-                                    <path d="M512 736l-264 160 70-300-232-202 306-26 120-282 120 282 306 26-232 202 70 300z"></path>
-                                </svg><svg viewBox="0 0 1024 1024" class="stars-icon02">
-                                    <path d="M512 736l-264 160 70-300-232-202 306-26 120-282 120 282 306 26-232 202 70 300z"></path>
-                                </svg><svg viewBox="0 0 1024 1024" class="stars-icon04">
-                                    <path d="M512 736l-264 160 70-300-232-202 306-26 120-282 120 282 306 26-232 202 70 300z"></path>
-                                </svg><svg viewBox="0 0 1024 1024" class="stars-icon06">
-                                    <path d="M512 736l-264 160 70-300-232-202 306-26 120-282 120 282 306 26-232 202 70 300z"></path>
-                                </svg><svg viewBox="0 0 1024 1024" class="stars-icon08">
-                                    <path d="M512 736l-264 160 70-300-232-202 306-26 120-282 120 282 306 26-232 202 70 300z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="stand-card-gallery-card stand-card-root-class-name3">
-                        <img alt="image"
-                             src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDEzfHxob21lfGVufDB8fHx8MTY3MTI4ODY3MA&ixlib=rb-4.0.3&h=1500"
-                             class="stand-card-image" />
-                        <div class="stand-card-container">
-                            <h1 class="stand-card-text"><span>Simples & Mínimo</span></h1>
-                            <div class="stars-container stars-root-class-name">
-                                <svg viewBox="0 0 1024 1024" class="stars-icon">
-                                    <path d="M512 736l-264 160 70-300-232-202 306-26 120-282 120 282 306 26-232 202 70 300z"></path>
-                                </svg><svg viewBox="0 0 1024 1024" class="stars-icon02">
-                                    <path d="M512 736l-264 160 70-300-232-202 306-26 120-282 120 282 306 26-232 202 70 300z"></path>
-                                </svg><svg viewBox="0 0 1024 1024" class="stars-icon04">
-                                    <path d="M512 736l-264 160 70-300-232-202 306-26 120-282 120 282 306 26-232 202 70 300z"></path>
-                                </svg><svg viewBox="0 0 1024 1024" class="stars-icon06">
-                                    <path d="M512 736l-264 160 70-300-232-202 306-26 120-282 120 282 306 26-232 202 70 300z"></path>
-                                </svg><svg viewBox="0 0 1024 1024" class="stars-icon08">
-                                    <path d="M512 736l-264 160 70-300-232-202 306-26 120-282 120 282 306 26-232 202 70 300z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="stand-card-gallery-card stand-card-root-class-name6">
-                        <img alt="image"
-                             src="https://images.unsplash.com/photo-1560440021-33f9b867899d?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDIxfHxob21lfGVufDB8fHx8MTY3MTI4ODY3MA&ixlib=rb-4.0.3&h=1500"
-                             class="stand-card-image" />
-                        <div class="stand-card-container">
-                            <h1 class="stand-card-text"><span>Conforto Necessário</span></h1>
-                            <div class="stars-container stars-root-class-name">
-                                <svg viewBox="0 0 1024 1024" class="stars-icon">
-                                    <path d="M512 736l-264 160 70-300-232-202 306-26 120-282 120 282 306 26-232 202 70 300z"></path>
-                                </svg><svg viewBox="0 0 1024 1024" class="stars-icon02">
-                                    <path d="M512 736l-264 160 70-300-232-202 306-26 120-282 120 282 306 26-232 202 70 300z"></path>
-                                </svg><svg viewBox="0 0 1024 1024" class="stars-icon04">
-                                    <path d="M512 736l-264 160 70-300-232-202 306-26 120-282 120 282 306 26-232 202 70 300z"></path>
-                                </svg><svg viewBox="0 0 1024 1024" class="stars-icon06">
-                                    <path d="M512 736l-264 160 70-300-232-202 306-26 120-282 120 282 306 26-232 202 70 300z"></path>
-                                </svg><svg viewBox="0 0 1024 1024" class="stars-icon08">
-                                    <path d="M512 736l-264 160 70-300-232-202 306-26 120-282 120 282 306 26-232 202 70 300z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="stand-card-gallery-card stand-card-root-class-name7">
-                        <img alt="image"
-                             src="https://images.unsplash.com/photo-1501183638710-841dd1904471?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDJ8fGhvbWV8ZW58MHx8fHwxNjcxMjg4Njcw&ixlib=rb-4.0.3&w=1500"
-                             class="stand-card-image" />
-                        <div class="stand-card-container">
-                            <h1 class="stand-card-text"><span>Bom Descanso</span></h1>
-                            <div class="stars-container stars-root-class-name">
-                                <svg viewBox="0 0 1024 1024" class="stars-icon">
-                                    <path d="M512 736l-264 160 70-300-232-202 306-26 120-282 120 282 306 26-232 202 70 300z"></path>
-                                </svg><svg viewBox="0 0 1024 1024" class="stars-icon02">
-                                    <path d="M512 736l-264 160 70-300-232-202 306-26 120-282 120 282 306 26-232 202 70 300z"></path>
-                                </svg><svg viewBox="0 0 1024 1024" class="stars-icon04">
-                                    <path d="M512 736l-264 160 70-300-232-202 306-26 120-282 120 282 306 26-232 202 70 300z"></path>
-                                </svg><svg viewBox="0 0 1024 1024" class="stars-icon06">
-                                    <path d="M512 736l-264 160 70-300-232-202 306-26 120-282 120 282 306 26-232 202 70 300z"></path>
-                                </svg><svg viewBox="0 0 1024 1024" class="stars-icon08">
-                                    <path d="M512 736l-264 160 70-300-232-202 306-26 120-282 120 282 306 26-232 202 70 300z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="stand-card-gallery-card stand-card-root-class-name11">
-                        <img alt="image"
-                             src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDIwfHxob21lfGVufDB8fHx8MTY3MTI4ODY3MA&ixlib=rb-4.0.3&w=1500"
-                             class="stand-card-image" />
-                        <div class="stand-card-container">
-                            <h1 class="stand-card-text"><span>Humilde Casa</span></h1>
-                            <div class="stars-container stars-root-class-name">
-                                <svg viewBox="0 0 1024 1024" class="stars-icon">
-                                    <path d="M512 736l-264 160 70-300-232-202 306-26 120-282 120 282 306 26-232 202 70 300z"></path>
-                                </svg><svg viewBox="0 0 1024 1024" class="stars-icon02">
-                                    <path d="M512 736l-264 160 70-300-232-202 306-26 120-282 120 282 306 26-232 202 70 300z"></path>
-                                </svg><svg viewBox="0 0 1024 1024" class="stars-icon04">
-                                    <path d="M512 736l-264 160 70-300-232-202 306-26 120-282 120 282 306 26-232 202 70 300z"></path>
-                                </svg><svg viewBox="0 0 1024 1024" class="stars-icon06">
-                                    <path d="M512 736l-264 160 70-300-232-202 306-26 120-282 120 282 306 26-232 202 70 300z"></path>
-                                </svg><svg viewBox="0 0 1024 1024" class="stars-icon08">
-                                    <path d="M512 736l-264 160 70-300-232-202 306-26 120-282 120 282 306 26-232 202 70 300z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
+                    </a>}
                 </div>
             </div>
         </div>

@@ -8,17 +8,25 @@ namespace Fair_ex.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        public List<Stand> stands { get; set; }
+        public IList<Stand> stands { get; set; }
+        public Tema tema { get; set; }
+        public StandService standService { get; set; }
+        public TemaService temaService { get; set; }
 
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
+            standService = new StandService();
+            temaService = new TemaService();
+
         }
 
-        public async void OnGet()
+
+        public void OnGet()
         {
-            StandService service = new StandService();
-            stands = await service.GetAllStands();
+            stands = standService.GetAllStands();
+            tema = temaService.GetTema("Casa e Jardim");
+
         }
     }
 }

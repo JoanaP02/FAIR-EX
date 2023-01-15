@@ -9,10 +9,10 @@ namespace Fair_ex.Services
         public StandService()
         {
         }
-        public async Task<List<Stand>> GetAllStands()
+        public List<Stand> GetAllStands()
         {
-            using var connection = new SqlConnection("Server=localhost;Database=FairEX;User Id=sa;Password=Password1234;");
-            var stands = await connection.QueryAsync<Stand>("select * from Stand");
+            using var connection = new SqlConnection("Server=localhost;Database=FairEXDB;User Id=sa;Password=Password1234;");
+            var stands = connection.Query<Stand>("select * from Stand");
             return stands.ToList();
         }
         public async Task<Stand> GetStand(int idFeira, string NomeVendedor)
