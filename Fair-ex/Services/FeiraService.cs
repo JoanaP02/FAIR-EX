@@ -14,17 +14,29 @@ namespace Fair_ex.Services
         public async Task<List<Feira>> GetAllFeiras()
         {
             using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            var feiras = await connection.QueryAsync<Feira>("select * from feira");
+            var query = @"SELECT * FROM feira f 
+                  JOIN tema t ON f.tema_tema = t.nome; ";
+            var feiras = await connection.QueryAsync<Feira, Tema, Feira>(query, (f, t) => {
+                f.Tema = t;
+                return f;
+            }).ConfigureAwait(false);
             return feiras.ToList();
         }
+
         public async Task<Feira> GetFeira(int id)
         {
             using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            var feira = await connection.QueryFirstAsync<Feira>("select * from feira where id = @Id",
-                new { Id = id });
-            return feira;
+            var query = @"SELECT * FROM feira f 
+                  JOIN tema t ON f.tema_tema = t.nome
+                  WHERE f.idfeira = @id; ";
+            var feira = await connection.QueryAsync<Feira, Tema, Feira>(query, (f, t) => {
+                f.Tema = t;
+                return f;
+            }, new { id }).ConfigureAwait(false);
+            return feira.FirstOrDefault();
         }
-        [HttpPost]
+
+
         public async void CreateFeira(Feira f)
         {
             using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));

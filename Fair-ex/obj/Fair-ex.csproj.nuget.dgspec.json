@@ -1,21 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ProgramData\\github\\li4\\Fair-ex\\Fair-ex.csproj": {}
+    "/Users/xiquita/Desktop/UM/3a1s/LI/FAIR-EX/Fair-ex/Fair-ex.csproj": {}
   },
   "projects": {
-    "D:\\ProgramData\\github\\li4\\Fair-ex\\Fair-ex.csproj": {
+    "/Users/xiquita/Desktop/UM/3a1s/LI/FAIR-EX/Fair-ex/Fair-ex.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ProgramData\\github\\li4\\Fair-ex\\Fair-ex.csproj",
+        "projectUniqueName": "/Users/xiquita/Desktop/UM/3a1s/LI/FAIR-EX/Fair-ex/Fair-ex.csproj",
         "projectName": "Fair-ex",
-        "projectPath": "D:\\ProgramData\\github\\li4\\Fair-ex\\Fair-ex.csproj",
-        "packagesPath": "C:\\Users\\35193\\.nuget\\packages\\",
-        "outputPath": "D:\\ProgramData\\github\\li4\\Fair-ex\\obj\\",
+        "projectPath": "/Users/xiquita/Desktop/UM/3a1s/LI/FAIR-EX/Fair-ex/Fair-ex.csproj",
+        "packagesPath": "/Users/xiquita/.nuget/packages/",
+        "outputPath": "/Users/xiquita/Desktop/UM/3a1s/LI/FAIR-EX/Fair-ex/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\35193\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/xiquita/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -43,6 +42,10 @@
               "target": "Package",
               "version": "[2.0.123, )"
             },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.5, )"
@@ -67,7 +70,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
         }
       }
     }
