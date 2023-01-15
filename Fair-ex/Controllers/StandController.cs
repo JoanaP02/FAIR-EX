@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Fair_ex.Models;
+using Fair_ex.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
 
@@ -9,47 +10,35 @@ namespace Fair_ex.Controllers
     [ApiController]
     public class StandController : Controller
     {
-        private readonly IConfiguration _config;
+        private StandService service;
         public StandController(IConfiguration config)
         {
-            _config = config;
+            service = new StandService(config);
         }
         [HttpGet]
         public async Task<ActionResult<List<Stand>>> GetAllStands()
         {
-            using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            var stands = await connection.QueryAsync<Produto>("select * from Stand");
-            return Ok(stands);
+            return Ok(service.GetAllStands());
         }
-        [HttpGet("{feira_idfeira}, {Vendedor_username}")]
-        public async Task<ActionResult<Produto>> GetProduto(int idProduto)
+        [HttpGet("{feira_idfeira}/{Vendedor_username}")]
+        public async Task<ActionResult<Stand>> GetStand(int idFeira, string NomeVendedor)
         {
-            using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            var produto = await connection.QueryFirstAsync<Produto>("select * from Vendedor where idProduto = @Id",
-                new { Id = idProduto });
-            return Ok(produto);
+            return Ok(service.GetStand(idFeira,NomeVendedor));
         }
         [HttpPost]
-        public async void CreateVendedor(Vendedor v)
+        public async void CreateStand(Stand s, int idFeira)
         {
-            using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            await connection.ExecuteAsync("insert into Vendedor (username, password, morada,telemovel,IBAN, avaliacao, receitaTotal, email)" +
-                " values(@Username, @Password, @Morada, @Telemovel, @IBAN, @Avaliacao, @ReceitaTotal, @Email)",
-                new { Username = v.Nome, Password = v.Password, Morada = v.Morada, Telemovel = v.Telemovel, IBAN = v.IBAN, Avaliacao = v.Avaliacao, ReceitaTotal = v.Email });
+            service.CreateStand(s, idFeira);
         }
         [HttpPut]
-        public async void UpdateVendedor(Vendedor v)
+        public async void UpdateStand(Stand s, int idFeira)
         {
-            using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            await connection.ExecuteAsync("update Vendedor set username= @Username, password = @Password, morada= @Morada, telemovel= @Telemovel,IBAN= @IBAN, avaliacao=@Avaliacao, receitaTotal= @ReceitaTotal, email= @Email",
-                new { Username = v.Nome, Password = v.Password, Morada = v.Morada, Telemovel = v.Telemovel, IBAN = v.IBAN, Avaliacao = v.Avaliacao, ReceitaTotal = v.Email });
+            service.UpdateStand(s, idFeira);
         }
-        [HttpDelete("{username}")]
-        public async void DeleteVendedor(int username)
+        [HttpDelete("{feira_idfeira}/{Vendedor_username}")]
+        public async void DeleteStand(int idFeira, string NomeVendedor)
         {
-            using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            await connection.ExecuteAsync("delete from Vendedor where username = @Id",
-                new { Id = username });
+            service.DeleteStand(idFeira, NomeVendedor);
         }
 
     }
