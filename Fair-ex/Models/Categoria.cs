@@ -2,12 +2,12 @@
 {
     public class Categoria
     {
-        public Categoria(string Nome,string Tema)
+        public Categoria(string Nome,Tema Tema)
         {
             this.Nome = Nome;
-            this.Tema = Tema;
+            this.Tema = new Tema(Tema);
         }
         public string Nome { get; set; }
-        public string Tema { get; set; }
+        public Tema Tema { get; set; }
     }
 }

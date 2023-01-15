@@ -31,10 +31,18 @@ namespace Fair_ex.Services
         public async void CreateCategoria(Categoria c)
         {
             using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            await connection.ExecuteAsync("insert into categoria (idcategoria, tema)" +
-                " values(@idcategoria, @tema)",
-                new { idcategoria = c.Nome, tema = c.Tema });
+            var tema = c.Tema;
+            var existingTema = await connection.QueryFirstOrDefaultAsync<Tema>("select * from tema where nome = @nome",
+                new { nome = tema.Nome });
+            if (existingTema == null)
+            {
+                await connection.ExecuteAsync("insert into tema (nome, descricao) values(@nome, @descricao)",
+                    new { nome = tema.Nome, descricao = tema.Descricao });
+            }
+            await connection.ExecuteAsync("insert into categoria (idcategoria, tema_tema) values(@idcategoria, @tema_tema)",
+                new { idcategoria = c.Nome, tema_tema = tema.Nome });
         }
+
 
         public async void UpdateCategoria(Categoria c)
         {
