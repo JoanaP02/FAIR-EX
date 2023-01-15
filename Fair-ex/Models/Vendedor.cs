@@ -2,6 +2,18 @@
 {
     public class Vendedor
     {
+        public Vendedor(string nome, string password, int telemovel, string morada, string iBAN, int avaliacao, int receitaTotal, string email)
+        {
+            Nome = nome;
+            Password = password;
+            Telemovel = telemovel;
+            Morada = morada;
+            IBAN = iBAN;
+            Avaliacao = avaliacao;
+            ReceitaTotal = receitaTotal;
+            Email = email;
+        }
+
         public string Nome { get; set; }
         public string Password { get; set; }
         public int Telemovel { get; set; }

@@ -2,6 +2,19 @@
 {
     public class Cliente
     {
+        public Cliente(string username, string password, string morada, int telemovel, int cartao, int cCV, string email, List<Produto>? carrinho, string validade)
+        {
+            Username = username;
+            Password = password;
+            Morada = morada;
+            Telemovel = telemovel;
+            Cartao = cartao;
+            CCV = cCV;
+            Email = email;
+            Carrinho = carrinho;
+            this.validade = validade;
+        }
+
         public string Username { get; set; }
         public string Password { get; set; }
         public string Morada { get; set; }

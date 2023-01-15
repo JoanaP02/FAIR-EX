@@ -2,6 +2,13 @@
 {
     public class Tema
     {
+        public Tema(string nome, string descricao, List<Categoria>? categorias)
+        {
+            Nome = nome;
+            Descricao = descricao;
+            Categorias = categorias;
+        }
+
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public List<Categoria>? Categorias { get; set; }
