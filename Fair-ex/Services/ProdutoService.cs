@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
 using Dapper;
 using Microsoft.AspNetCore.Hosting.Server;
-using static Slapper.AutoMapper;
 
 namespace Fair_ex.Services
 {
