@@ -24,5 +24,7 @@
         public int Stock { get; set; }
         public int IdFeira { get; set; }
         public string UsernameVendedor { get; set; }
+
+        public override string ToString() { return this.Nome; }
     }
 }

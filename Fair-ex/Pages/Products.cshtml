@@ -1,0 +1,22 @@
+﻿@page
+@using Fair_ex.Pages
+@model ProductsModel
+@{
+    ViewData["Title"] = "Produtos";
+    
+}
+
+
+
+
+<div class="text-center">
+    <h1 class="display-4">ESTA APLICAÇÃO É MESMO BOA, ADORO</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">BUEDA FIXE</a>.</p>
+    <form method="post">
+        <button class="btn btn-primary" asp-page-handler="FazCenas">View Products</button>
+    </form>
+    <p>Result: @Model.ResultString</p>
+
+</div>
+
+

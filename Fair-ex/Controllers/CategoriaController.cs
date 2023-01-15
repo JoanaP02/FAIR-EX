@@ -21,7 +21,7 @@ namespace Fair_ex.Controllers
             return Ok(service.GetAllCategorias());
         }
         [HttpGet("{idcategoria}")]
-        public async Task<ActionResult<Categoria>> GetCategoria(int id)
+        public async Task<ActionResult<Categoria>> GetCategoria(string id)
         {
             return Ok(service.GetCategoria(id));
         }
@@ -36,7 +36,7 @@ namespace Fair_ex.Controllers
             service.UpdateCategoria(c);
         }
         [HttpDelete("{idcategoria}")]
-        public async void DeleteCategoria(int id)
+        public async void DeleteCategoria(string id)
         {
             service.DeleteCategoria(id);
         }

@@ -3,17 +3,24 @@ using Fair_ex.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
 using Fair_ex.Services;
+using Fair_ex.Pages;
 
-namespace Fair_ex.Controllers
-{
+namespace Fair_ex.Controllers {
+
     [Route("produto/[controller]")]
     [ApiController]
     public class ProdutoController : Controller
     {
         private ProdutoService service;
-        public ProdutoController(IConfiguration config)
+        public ProdutoController()
         {
-            service = new ProdutoService(config);
+            service = new ProdutoService();
+        }
+
+        public ActionResult Index()
+        {
+            var model = new ProductsModel();
+            return View(model);
         }
         [HttpGet]
         public async Task<ActionResult<List<Produto>>> GetAllProdutos() {

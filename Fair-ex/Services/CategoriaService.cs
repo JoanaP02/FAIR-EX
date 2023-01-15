@@ -15,14 +15,15 @@ namespace Fair_ex.Services
 
         public async Task<List<Categoria>> GetAllCategorias()
         {
-            using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
+            using var connection = new SqlConnection("Server=localhost;Database=FairEX;User Id=sa;Password=Password1234;");
+            connection.Open();
             var categorias = await connection.QueryAsync<Categoria>("select * from categoria");
             return categorias.ToList();
         }
 
-        public async Task<Categoria> GetCategoria(int id)
+        public async Task<Categoria> GetCategoria(string id)
         {
-            using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
+            using var connection = new SqlConnection("Server=localhost;Database=FairEX;User Id=sa;Password=Password1234;");
             var categoria = await connection.QueryFirstAsync<Categoria>("select * from categoria where idcategoria= @Id",
                 new { Id = id });
             return categoria;
@@ -30,22 +31,24 @@ namespace Fair_ex.Services
 
         public async void CreateCategoria(Categoria c)
         {
-            using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            await connection.ExecuteAsync("insert into categoria (idcategoria, tema)" +
-                " values(@idcategoria, @tema)",
-                new { idcategoria = c.Nome, tema = c.Tema });
+            using var connection = new SqlConnection("Server=localhost;Database=FairEX;User Id=sa;Password=Password1234;");
+            var result = GetCategoria(c.Nome);
+            if (result==null){
+                await connection.ExecuteAsync("insert into categoria (idcategoria, tema_tema)" +
+                    " values(@idcategoria, @tema)",
+                    new { idcategoria = c.Nome, tema = c.Tema }); }
         }
 
         public async void UpdateCategoria(Categoria c)
         {
-            using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
+            using var connection = new SqlConnection("Server=localhost;Database=FairEX;User Id=sa;Password=Password1234;");
             await connection.ExecuteAsync("update categoria set idcategoria= @idcategoria, tema= @tema",
                 new { idcategoria = c.Nome, tema = c.Tema });
         }
 
-        public async void DeleteCategoria(int id)
+        public async void DeleteCategoria(string id)
         {
-            using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
+            using var connection = new SqlConnection("Server=localhost;Database=FairEX;User Id=sa;Password=Password1234;");
             await connection.ExecuteAsync("delete from categoria where idcategoria= @Id",
                 new { Id = id });
         }

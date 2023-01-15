@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Net.NetworkInformation;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Fair_ex.Pages
@@ -16,5 +17,7 @@ namespace Fair_ex.Pages
         {
 
         }
+
+
     }
 }
