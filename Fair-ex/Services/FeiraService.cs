@@ -13,29 +13,34 @@ namespace Fair_ex.Services
         public async Task<List<Feira>> GetAllFeiras()
         {
             using var connection = new SqlConnection("Server=localhost;Database=FairEX;User Id=sa;Password=Password1234;");
-            //var query = @"SELECT * FROM feira f 
-            //       INNER JOIN tema t ON f.tema_tema = t.nome; ";
-            //var feiras = await connection.QueryAsync<Feira, Tema, Feira>(query, (f, t) => {
-            //    f.Tema = t;
-            //    return f;
-            //},splitOn:"nome,descricao").ConfigureAwait(false);
-            var feiras = await connection.QueryAsync<Feira>("select * from feira");
-            Console.WriteLine("AAAAAA");
-            Console.WriteLine(string.Join(",", feiras.ToList()));
+            var query = @"SELECT f.idfeira, f.tema_tema, f.dataDeInicioInscricao, f.dataDeFimInscricao, f.dataComeco, f.dataTermino, t.nome, t.descricao
+              FROM feira f 
+              JOIN tema t ON f.tema_tema = t.nome; ";
+
+            var feiras = await connection.QueryAsync<Feira, Tema, Feira>(query, (f, t) =>
+            {
+                f.Tema = t;
+                return f;
+            },splitOn:"nome").ConfigureAwait(false);
             return feiras.ToList();
         }
 
         public async Task<Feira> GetFeira(int id)
         {
             using var connection = new SqlConnection("Server=localhost;Database=FairEX;User Id=sa;Password=Password1234;");
-            var query = @"SELECT * FROM feira f 
-                  JOIN tema t ON f.tema_tema = t.nome
-                  WHERE f.idfeira = @id; ";
-            var feira = await connection.QueryAsync<Feira, Tema, Feira>(query, (f, t) => {
+            var query = @"SELECT f.idfeira, f.tema_tema, f.dataDeInicioInscricao, f.dataDeFimInscricao, f.dataComeco, f.dataTermino, t.nome, t.descricao
+              FROM feira f 
+              JOIN tema t ON f.tema_tema = t.nome
+              WHERE f.idfeira = @id;";
+
+            var feiras = await connection.QueryAsync<Feira, Tema, Feira>(query, (f, t) =>
+            {
                 f.Tema = t;
                 return f;
-            }, new { id }).ConfigureAwait(false);
-            return feira.FirstOrDefault();
+            }, new { id },splitOn: "nome").ConfigureAwait(false);
+            var feira = feiras.FirstOrDefault();
+            Console.WriteLine(feira);
+            return feira;
         }
 
 

@@ -11,9 +11,9 @@ namespace Fair_ex.Controllers
     public class ClienteController : Controller
     {
         private ClienteService service;
-        public ClienteController(IConfiguration config)
+        public ClienteController( )
         {
-            service = new ClienteService(config);
+            service = new ClienteService();
         }
         [HttpGet]
         public async Task<ActionResult<List<Cliente>>> GetAllClientes()

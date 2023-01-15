@@ -11,9 +11,9 @@ namespace Fair_ex.Controllers
     public class CategoriaController : Controller
     {
         private CategoriaService service;
-        public CategoriaController(IConfiguration config)
+        public CategoriaController( )
         {
-            service = new CategoriaService(config);
+            service = new CategoriaService();
         }
         [HttpGet]
         public async Task<ActionResult<List<Categoria>>> GetAllCategorias()

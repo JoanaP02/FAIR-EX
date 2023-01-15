@@ -7,10 +7,8 @@ namespace Fair_ex.Services
 {
     public class ClienteService
     {
-        private readonly IConfiguration _config;
-        public ClienteService(IConfiguration config)
+        public ClienteService()
         {
-            _config = config;
         }
 
         public async Task<List<Cliente>> GetAllClientes()

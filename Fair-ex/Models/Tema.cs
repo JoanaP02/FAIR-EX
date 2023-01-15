@@ -1,7 +1,13 @@
-﻿namespace Fair_ex.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Fair_ex.Models
 {
     public class Tema
     {
+        public Tema()
+        {
+
+        }
 
         public Tema(Tema tema)
         {
@@ -17,8 +23,12 @@
             Categorias = categorias;
         }
 
+        [Column("nome")]
         public string Nome { get; set; }
+        [Column("descricao")]
         public string Descricao { get; set; }
+        [Column("imagem")]
+        public string Imagem { get; set; }
         public List<Categoria>? Categorias { get; set; }
     }
 }

@@ -11,9 +11,9 @@ namespace Fair_ex.Controllers
     public class TemaController : Controller
     {
         private TemaService service;
-        public TemaController(IConfiguration config)
+        public TemaController( )
         {
-            service = new TemaService(config);
+            service = new TemaService();
         }
         [HttpGet]
         public async Task<ActionResult<List<Tema>>> GetAllTemas()

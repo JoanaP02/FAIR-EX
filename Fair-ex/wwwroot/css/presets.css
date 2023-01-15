@@ -1,0 +1,76 @@
+﻿:root {
+    --dl-space-space-halfunits: 8px;
+    --dl-space-space-unit: 16px;
+    --dl-space-space-oneandhalfunits: 24px;
+    --dl-space-space-twounits: 32px;
+    --dl-space-space-threeunits: 48px;
+    --dl-space-space-fourunits: 64px;
+    --dl-space-space-fiveunits: 80px;
+    --dl-space-space-sixunits: 96px;
+    --dl-size-size-maxwidth: 1400px;
+    --dl-color-pallet-green: #D2E4D0;
+    --dl-color-pallet-yellow: #EFCF3E;
+    --dl-color-gray-black: #000000;
+    --dl-color-gray-black80: rgba(0,0,0,0.8);
+    --dl-color-gray-black50: rgba(0,0,0,0.5019607843137255);
+    --dl-color-gray-black60: rgba(0,0,0,0.6);
+    --dl-color-gray-500: #595959;
+    --dl-color-gray-700: #999999;
+    --dl-color-gray-900: #D9D9D9;
+    --dl-color-gray-950: #E5E5E5;
+    --dl-color-gray-white: #FFFFFF;
+    --dl-size-size-xsmall: 16px;
+    --dl-size-size-small: 48px;
+    --dl-size-size-medium: 96px;
+    --dl-size-size-large: 144px;
+    --dl-size-size-xlarge: 192px;
+    --dl-size-size-xxlarge: 288px;
+    --dl-size-size-maxwidth: 1328px;
+    --dl-radius-radius-radius2: 2px;
+    --dl-radius-radius-radius4: 4px;
+    --dl-radius-radius-radius6: 6px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+.Heading-1 {
+    font-size: 36px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+}
+
+.Heading-2 {
+    font-size: 28px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+}
+
+.Heading-3 {
+    font-size: 24px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+}
+
+.heading-tema {
+    font-size: 36px;
+    font-family: 'Jost',sans-serif;
+    font-weight: 500;
+    line-height: 47px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.Heading-4 {
+    font-size: 24px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    color: var(--dl-color-gray-500);
+}
+
+.Heading-5 {
+    font-size: 20px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    color: var(--dl-color-gray-500);
+}

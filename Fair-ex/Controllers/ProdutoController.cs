@@ -17,11 +17,7 @@ namespace Fair_ex.Controllers {
             service = new ProdutoService();
         }
 
-        public ActionResult Index()
-        {
-            var model = new ProductsModel();
-            return View(model);
-        }
+
         [HttpGet]
         public async Task<ActionResult<List<Produto>>> GetAllProdutos() {
             return Ok(service.GetAllProdutos());

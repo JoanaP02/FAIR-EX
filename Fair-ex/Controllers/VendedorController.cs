@@ -11,9 +11,9 @@ namespace Fair_ex.Controllers
     public class VendedorController : Controller
     {
         private VendedorService service;
-        public VendedorController(IConfiguration config)
+        public VendedorController()
         {
-            service = new VendedorService(config);
+            service = new VendedorService();
         }
         [HttpGet]
         public async Task<ActionResult<List<Vendedor>>> GetAllVendedores()

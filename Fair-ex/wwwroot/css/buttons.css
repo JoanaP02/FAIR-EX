@@ -1,0 +1,66 @@
+﻿@import url(“presets.css”);
+
+.button {
+    color: var(--dl-color-gray-black80);
+    cursor: pointer;
+    display: flex;
+    padding: 0.5rem 1rem;
+    position: relative;
+    box-sizing: border-box;
+    font-style: normal;
+    align-items: flex-start;
+    flex-shrink: 1;
+    font-weight: 500;
+    line-height: 14px;
+    padding-top: 12px;
+    transition: 0.3s;
+    border-color: var(--dl-color-gray-black50);
+    border-style: solid;
+    border-width: 1px;
+    padding-left: 24px;
+    border-radius: 0px;
+    padding-right: 24px;
+    padding-bottom: 12px;
+    text-decoration: none;
+    font-family: 'Jost', sans-serif;
+    background-color: var(--dl-color-pallet-green);
+}
+
+    .button:hover {
+        background-color: var(--dl-color-pallet-yellow);
+        color: #FFFFFF;
+        transition: 0.3s;
+        border-color: var(--dl-color-pallet-yellow);
+    }
+
+.button2 {
+    font-family: 'Jost', sans-serif;
+    color: var(--dl-color-gray-black80);
+    cursor: pointer;
+    display: flex;
+    padding: 0.5rem 1rem;
+    position: relative;
+    box-sizing: border-box;
+    font-style: normal;
+    align-items: center;
+    flex-shrink: 1;
+    font-weight: 500;
+    line-height: 14px;
+    padding-top: 12px;
+    transition: 0.3s;
+    border-color: var(--dl-color-gray-black50);
+    border-style: solid;
+    border-width: 1px;
+    padding-left: 24px;
+    border-radius: 0px;
+    padding-right: 24px;
+    padding-bottom: 12px;
+    text-decoration: none;
+}
+
+    .button2:hover {
+        background-color: var(--dl-color-pallet-yellow);
+        color: #FFFFFF;
+        transition: 0.3s;
+        border-color: var(--dl-color-pallet-yellow);
+    }

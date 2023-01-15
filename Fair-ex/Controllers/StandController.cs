@@ -11,9 +11,9 @@ namespace Fair_ex.Controllers
     public class StandController : Controller
     {
         private StandService service;
-        public StandController(IConfiguration config)
+        public StandController( )
         {
-            service = new StandService(config);
+            service = new StandService();
         }
         [HttpGet]
         public async Task<ActionResult<List<Stand>>> GetAllStands()
