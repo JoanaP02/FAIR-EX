@@ -17,16 +17,31 @@ namespace Fair_ex.Services
         {
             using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
             var categorias = await connection.QueryAsync<Categoria>("select * from categoria");
+            var temas = await connection.QueryAsync<Tema>("select * from tema");
+            foreach (var c in categorias)
+            {
+                var tema = temas.FirstOrDefault(t => t.Nome == c.Tema.Nome);
+                if (tema != null)
+                    c.Tema = tema;
+            }
             return categorias.ToList();
         }
 
-        public async Task<Categoria> GetCategoria(int id)
+        public async Task<Categoria> GetCategoria(string id)
         {
             using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            var categoria = await connection.QueryFirstAsync<Categoria>("select * from categoria where idcategoria= @Id",
+            var categoria = await connection.QueryFirstAsync<Categoria>("select * from categoria where idcategoria = @Id",
                 new { Id = id });
+            if (categoria.Tema != null)
+            {
+                var tema = await connection.QueryFirstAsync<Tema>("select * from tema where nome = @nome",
+                new { nome = categoria.Tema.Nome });
+                categoria.Tema = tema;
+            }
             return categoria;
         }
+
+
 
         public async void CreateCategoria(Categoria c)
         {
@@ -47,15 +62,21 @@ namespace Fair_ex.Services
         public async void UpdateCategoria(Categoria c)
         {
             using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            await connection.ExecuteAsync("update categoria set idcategoria= @idcategoria, tema= @tema",
-                new { idcategoria = c.Nome, tema = c.Tema });
+            var tema = c.Tema;
+            await connection.ExecuteAsync("update tema set nome= @nome, descricao= @descricao where nome= @tema_nome",
+                new { nome = tema.Nome, descricao = tema.Descricao, tema_nome = tema.Nome });
+            await connection.ExecuteAsync("update categoria set idcategoria= @idcategoria, tema_tema= @tema_tema where idcategoria= @id",
+                new { idcategoria = c.Nome, tema_tema = tema.Nome, id = c.Nome });
         }
 
-        public async void DeleteCategoria(int id)
+
+
+        public async void DeleteCategoria(string id)
         {
             using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
             await connection.ExecuteAsync("delete from categoria where idcategoria= @Id",
                 new { Id = id });
         }
+
     }
 }
