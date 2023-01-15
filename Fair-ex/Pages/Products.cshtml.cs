@@ -2,6 +2,7 @@ using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using Fair_ex.Controllers;
 using Fair_ex.Models;
+using Fair_ex.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
@@ -13,18 +14,18 @@ namespace Fair_ex.Pages
 
         public ProductsModel()
         {
-            Result = new List<Produto>();
+            Result = new List<Feira>();
             ResultString = string.Join(",", Result);
 
 
         }
 
-        public List<Produto> Result { get; set; }
+        public List<Feira> Result { get; set; }
         public string ResultString { get; set; }
 
         public void OnGet()
         {
-            Result = new List<Produto>();
+            Result = new List<Feira>();
             ResultString = string.Join(",", Result);
 
         }
@@ -37,17 +38,12 @@ namespace Fair_ex.Pages
 
         public async void fazCenas()
         {
-            ProdutoController pc = new ProdutoController();
-            Categoria newC = new Categoria("aaa2", "bbbb");
-            Produto newP = new Produto(1, "prod", newC, "", 0, 0, 1, "");
-            pc.CreateProduto(newP);
-            var result = await pc.GetAllProdutos();
+            FeiraService fc = new FeiraService();
+            var result = await fc.GetAllFeiras();
             // get the list of products from the result
-            Result = result.Value;
+            Result = result;
         }
 
-        public void fazCenas2()
-        { Console.WriteLine("FUNCIONA"); }
 
 
 

@@ -11,9 +11,9 @@ namespace Fair_ex.Controllers
     public class FeiraController : Controller
     {
         private FeiraService service;
-        public FeiraController(IConfiguration config)
+        public FeiraController()
         {
-            service = new FeiraService(config);
+            service = new FeiraService();
         }
         [HttpGet]
         public async Task<ActionResult<List<Feira>>> GetAllFeiras()

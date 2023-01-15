@@ -15,7 +15,7 @@ namespace Fair_ex.Services
 
         public async Task<List<Cliente>> GetAllClientes()
         {
-            using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
+            using var connection = new SqlConnection("Server=localhost;Database=FairEX;User Id=sa;Password=Password1234;");
             var clientes = await connection.QueryAsync<Cliente, Produto, Cliente>(
                 "SELECT c.*, p.* FROM Cliente c JOIN Carrinho ca ON c.username = ca.Cliente_username JOIN Produtos p ON ca.Produto_idProduto = p.idProduto",
                 (cliente, produto) =>
@@ -32,7 +32,7 @@ namespace Fair_ex.Services
 
         public async Task<ActionResult<Cliente>> GetCliente(string username)
         {
-            using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
+            using var connection = new SqlConnection("Server=localhost;Database=FairEX;User Id=sa;Password=Password1234;");
             var cliente = await connection.QueryFirstAsync<Cliente>("SELECT * FROM Cliente WHERE username = @Username",
                 new { Username = username });
 
@@ -49,7 +49,7 @@ namespace Fair_ex.Services
 
         public async void CreateCliente(Cliente c)
         {
-            using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
+            using var connection = new SqlConnection("Server=localhost;Database=FairEX;User Id=sa;Password=Password1234;");
             await connection.ExecuteAsync("insert into Cliente (username,password,Morada,numCartao,numTelemovel, cartaoVal,cartaoCCV, email)" +
                 " values(@Username, @Password, @Morada, @NumCartao, @Telemovel, @ValCartao, @CCV, @Email)",
                 new
@@ -67,7 +67,7 @@ namespace Fair_ex.Services
 
         public async void UpdateCliente(Cliente c)
         {
-            using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
+            using var connection = new SqlConnection("Server=localhost;Database=FairEX;User Id=sa;Password=Password1234;");
             connection.Open();
             using var transaction = connection.BeginTransaction();
             try
@@ -91,7 +91,7 @@ namespace Fair_ex.Services
 
         public async void DeleteCliente(string username)
         {
-            using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
+            using var connection = new SqlConnection("Server=localhost;Database=FairEX;User Id=sa;Password=Password1234;");
             await connection.ExecuteAsync("delete from Cliente where username = @Username",
                 new { Username = username });
         }

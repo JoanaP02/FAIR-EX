@@ -19,6 +19,7 @@
         public string DataComecoInicio { get; set; }
         public string DataComecoFim { get; set; }
         public List<Stand>? Stands { get; set; }
+        public override string ToString() { return this.Id.ToString(); }
 
 
     }
