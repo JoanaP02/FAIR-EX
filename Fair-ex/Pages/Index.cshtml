@@ -103,7 +103,7 @@
                             </div>
                         </div>
                         <img alt="image"
-                             src="https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDMyfHxob21lfGVufDB8fHx8MTY3MTI4ODY3OA&amp;ixlib=rb-4.0.3&amp;w=600"
+                             src=@Model.tema.Imagem
                              class="index-image1" />
                     </div>
                 </div>
@@ -121,44 +121,16 @@
                         </span>
                     </div>
                     <div class="index-cards-container">
-                        <div class="category-card-category-card">
-                            <img alt="image"
-                                 src="https://images.unsplash.com/photo-1594125674956-61a9b49c8ecc?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDExfHx0YWJsZXxlbnwwfHx8fDE2NTI4MjE5ODQ&ixlib=rb-1.2.1&h=200"
-                                 class="category-card-image" />
-                            <span class="category-card-text"><span>Mesas</span></span>
-                        </div>
-                        <div class="category-card-category-card">
-                            <img alt="image"
-                                 src="https://images.unsplash.com/photo-1519947486511-46149fa0a254?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDEyfHxjaGFpcnxlbnwwfHx8fDE2NTI4MTgxODk&ixlib=rb-1.2.1&w=1500"
-                                 class="category-card-image" />
-                            <span class="category-card-text"><span>Cadeiras</span></span>
-                        </div>
-                        <div class="category-card-category-card">
-                            <img alt="image"
-                                 src="https://images.unsplash.com/photo-1573469635233-7974cb21a915?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDE3fHxsYW1wc3xlbnwwfHx8fDE2NTI4MjIwMTY&ixlib=rb-1.2.1&h=200"
-                                 class="category-card-image" />
-                            <span class="category-card-text"><span>Lâmpadas</span></span>
-                        </div>
-                        <div class="category-card-category-card">
-                            <img alt="image"
-                                 src="https://images.unsplash.com/photo-1558603668-6570496b66f8?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDU3fHxwbGFudHN8ZW58MHx8fHwxNjUyODIyMDcy&ixlib=rb-1.2.1&h=200"
-                                 class="category-card-image" />
-                            <span class="category-card-text"><span>Plantas</span></span>
-                        </div>
-                        <div class="category-card-category-card">
-                            <img alt="image"
-                                 src="https://images.unsplash.com/photo-1538307602205-80b5c2ff26ec?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDF8fGdhcmRlbiUyMGNoYWlyfGVufDB8fHx8MTY3MTI4Nzg2MA&ixlib=rb-4.0.3&w=1500"
-                                 class="category-card-image" />
-                            <span class="category-card-text">
-                                <span>Mobília Exterior</span>
-                            </span>
-                        </div>
-                        <div class="category-card-category-card">
-                            <img alt="image"
-                                 src="https://images.unsplash.com/photo-1523301551780-cd17359a95d0?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDE4fHxnYXJkZW5pbmd8ZW58MHx8fHwxNjcxMjg3Nzk4&ixlib=rb-4.0.3&w=1500"
-                                 class="category-card-image" />
-                            <span class="category-card-text"><span>Jardinagem</span></span>
-                        </div>
+                        @foreach (var categoria in Model.categorias)
+                        {
+                                <div class="category-card-category-card">
+                                <img alt="image"
+         src="@categoria.imagem"
+         class="category-card-image" />
+    <span class="category-card-text"><span>@categoria.Idcategoria</span></span>
+</div>
+                            }
+
                     </div>
                 </div>
                 <div class="index-banner">
@@ -174,8 +146,7 @@
                     <div class="index-container04">
                         <span class="index-text11">
                             A Fairex é uma plataforma de feiras online, que surgiu em 2022
-                            trazendo uma nova forma de sentir a sensação de estar numa feira e
-                            bla bla bla.
+                            trazendo uma nova forma de sentir a sensação de estar numa feira.
                         </span>
                         <div class="index-btn-group">
                             <a href="#info" class="index-link button2">

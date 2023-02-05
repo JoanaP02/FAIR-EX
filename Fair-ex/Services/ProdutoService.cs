@@ -55,7 +55,7 @@ namespace Fair_ex.Services
             {
                 await connection.ExecuteAsync("insert into Produtos (idProduto, Nome, categoria_idcategoria,Descricao,Preco, Stand_Vendedor_username)" +
                 " values(@Id, @Nome, @Categoria, @Descricao, @Preco, @Idfeira, @Username)",
-                new { Id = p.Id, Nome = p.Nome, Categoria = p.Categoria.Nome, Descricao = p.Descricao, Preco = p.Preco, Username = p.UsernameVendedor });
+                new { Id = p.Id, Nome = p.Nome, Categoria = p.Categoria.Idcategoria, Descricao = p.Descricao, Preco = p.Preco, Username = p.UsernameVendedor });
             }
         }
         
@@ -66,7 +66,7 @@ namespace Fair_ex.Services
             CategoriaService cs = new CategoriaService();
             cs.UpdateCategoria(c);
             await connection.ExecuteAsync("update Produtos set idProduto= @Id, Nome= @Nome, categoria_idcategoria=@Categoria,Descricao=@Descricao,Preco=@Preco, Stand_Vendedor_username= @Username",
-                new { Id = p.Id, Nome = p.Nome, Categoria = p.Categoria.Nome, Descricao = p.Descricao, Preco = p.Preco, Username = p.UsernameVendedor });
+                new { Id = p.Id, Nome = p.Nome, Categoria = p.Categoria.Idcategoria, Descricao = p.Descricao, Preco = p.Preco, Username = p.UsernameVendedor });
         }
         
         public async void DeleteProduto(int idProduto)
